@@ -1,6 +1,10 @@
+import { useReveal } from '../hooks/useReveal.js';
+
 export default function Family({ groom, bride }) {
+  const [ref, visible] = useReveal();
+
   return (
-    <section id="family">
+    <section id="family" ref={ref} className={`reveal ${visible ? 'visible' : ''}`}>
       <div className="eyebrow-flourish"><span>Together with our families</span></div>
       <div className="family-row">
         <div className="family-block">

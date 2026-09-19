@@ -172,3 +172,14 @@ h1,h2,h3{ font-family:var(--serif); font-weight:500; }
   .door-tap{ animation:none; }
   html{ scroll-behavior:auto; }
 }
+
+* ---------- SCROLL REVEAL ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
