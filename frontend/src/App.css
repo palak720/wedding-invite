@@ -1,0 +1,174 @@
+:root{
+  --maroon-deep:#33080c;
+  --maroon:#6e1a20;
+  --maroon-soft:#8a2a2f;
+  --gold:#c9a227;
+  --gold-light:#e6cd82;
+  --ivory:#faf3e4;
+  --charcoal:#241511;
+  --charcoal-soft:#4a352c;
+  --serif:'Cormorant Garamond', serif;
+  --serif-sc:'Cormorant SC', serif;
+  --sans:'Jost', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--ivory);
+  color:var(--charcoal);
+  overflow-x:hidden;
+}
+::selection{background:var(--gold-light); color:var(--maroon-deep);}
+
+/* ---------- DOOR OVERLAY ---------- */
+#doorOverlay{ position:fixed; inset:0; z-index:100; display:flex; }
+.door{
+  flex:1; height:100%;
+  background:linear-gradient(180deg, var(--maroon-deep), var(--maroon) 55%, var(--maroon-deep));
+  position:relative;
+  transition: transform 1.4s cubic-bezier(.76,0,.24,1);
+  box-shadow: inset 0 0 60px rgba(0,0,0,.5);
+}
+.door::before{ content:""; position:absolute; inset:14px; border:1.5px solid var(--gold); opacity:.65; }
+.door::after{ content:""; position:absolute; inset:26px; border:1px solid var(--gold); opacity:.35; }
+.door-left{ transform-origin:left center; border-right:1px solid rgba(201,162,39,.4);}
+.door-right{ transform-origin:right center;}
+#doorOverlay.open .door-left{ transform:rotateY(-92deg) translateX(-2px); }
+#doorOverlay.open .door-right{ transform:rotateY(92deg) translateX(2px); }
+#doorOverlay.hidden{ visibility:hidden; pointer-events:none; }
+.door-center{
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:22px;
+  color:var(--gold-light); text-align:center; pointer-events:none;
+}
+.door-om{ font-size:2.6rem; font-family:var(--serif); color:var(--gold); }
+.door-names{
+  font-family:var(--serif); font-style:italic; font-weight:500;
+  font-size:clamp(1.6rem,6vw,2.4rem); letter-spacing:.03em;
+}
+.door-tap{
+  font-family:var(--sans); font-size:.78rem; letter-spacing:.28em;
+  color:var(--gold-light); opacity:.85; padding:12px 26px;
+  border:1px solid var(--gold); border-radius:2px; pointer-events:all;
+  cursor:pointer; background:transparent; animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:.6;} 50%{opacity:1;} }
+
+/* ---------- SECTIONS ---------- */
+section{ padding:90px 24px; max-width:620px; margin:0 auto; text-align:center; position:relative; }
+.dark{ background:var(--maroon-deep); color:var(--ivory); max-width:none; }
+.dark .inner{ max-width:620px; margin:0 auto; padding:0 24px;}
+.eyebrow-flourish{ display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:20px; }
+.eyebrow-flourish span{ font-family:var(--serif-sc); font-size:.9rem; letter-spacing:.18em; color:var(--gold); }
+h1,h2,h3{ font-family:var(--serif); font-weight:500; }
+.blessing{ font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--gold-light); margin-bottom:10px; }
+
+/* ---------- HERO ---------- */
+#hero{ padding-top:70px; padding-bottom:70px; }
+.hero-names{ font-size:clamp(2.6rem,10vw,4.2rem); line-height:1.05; color:var(--ivory); margin:18px 0 8px; }
+.hero-amp{ display:block; font-size:.5em; color:var(--gold); margin:6px 0; }
+.hero-sub{ font-family:var(--sans); font-weight:300; font-size:.85rem; letter-spacing:.24em; color:var(--gold-light); opacity:.9; }
+.divider{ width:64px; height:1px; background:var(--gold); margin:28px auto; opacity:.7; }
+
+/* ---------- FAMILY ---------- */
+.family-row{ display:flex; gap:36px; justify-content:center; flex-wrap:wrap; margin-top:26px; }
+.family-block{ flex:1; min-width:200px; }
+.family-role{ font-size:.72rem; letter-spacing:.22em; color:var(--maroon-soft); font-weight:500; margin-bottom:8px; }
+.family-names{ font-family:var(--serif); font-size:1.35rem; color:var(--charcoal); }
+.family-parents{ font-size:.85rem; color:var(--charcoal-soft); margin-top:6px; font-style:italic; font-family:var(--serif); }
+
+/* ---------- COUNTDOWN ---------- */
+#countdown{ background:var(--maroon); color:var(--ivory); max-width:none; }
+.count-grid{ display:flex; justify-content:center; gap:clamp(10px,4vw,28px); margin-top:30px; flex-wrap:wrap; }
+.count-unit{ min-width:74px; }
+.count-num{ font-family:var(--serif); font-size:clamp(2.2rem,7vw,3rem); color:var(--gold-light); line-height:1; }
+.count-label{ font-size:.68rem; letter-spacing:.18em; margin-top:8px; opacity:.85; }
+.count-date{ margin-top:34px; font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--gold-light); }
+
+/* ---------- TIMELINE ---------- */
+.event-list{ margin-top:34px; text-align:left; }
+.event-item{ display:flex; gap:20px; padding:20px 0; border-top:1px solid rgba(110,26,32,.18); }
+.event-item:last-child{ border-bottom:1px solid rgba(110,26,32,.18); }
+.event-day{ font-family:var(--serif-sc); font-size:1.6rem; color:var(--maroon); min-width:52px; text-align:center; }
+.event-name{ font-family:var(--serif); font-size:1.25rem; margin-bottom:3px; }
+.event-meta{ font-size:.82rem; color:var(--charcoal-soft); }
+
+/* ---------- GALLERY ---------- */
+#gallery{ background:var(--maroon-deep); color:var(--ivory); max-width:none; }
+.gallery-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:30px; }
+.gallery-item{
+  aspect-ratio:3/4; border:1px solid rgba(201,162,39,.5);
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(160deg, rgba(201,162,39,.14), rgba(201,162,39,.02));
+  font-family:var(--serif); font-style:italic; font-size:.85rem;
+  color:var(--gold-light); opacity:.75; padding:10px; text-align:center;
+  overflow:hidden;
+}
+.gallery-item-photo{ padding:0; opacity:1; }
+.gallery-item-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ---------- VENUE ---------- */
+.venue-name{ font-family:var(--serif); font-size:1.6rem; margin-top:16px; }
+.venue-addr{ margin-top:8px; color:var(--charcoal-soft); font-size:.92rem; }
+.btn-row{ display:flex; gap:14px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+.btn{
+  font-family:var(--sans); font-size:.8rem; letter-spacing:.08em;
+  padding:12px 24px; border:1px solid var(--maroon); color:var(--maroon);
+  text-decoration:none; border-radius:1px; transition:background .25s, color .25s;
+  cursor:pointer; background:none;
+}
+.btn:hover{ background:var(--maroon); color:var(--ivory); }
+.btn.filled{ background:var(--maroon); color:var(--ivory); }
+.btn.filled:hover{ background:var(--maroon-soft); }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+/* ---------- RSVP FORM ---------- */
+#rsvp{ background:var(--ivory); }
+.rsvp-form{ margin-top:28px; display:flex; flex-direction:column; gap:14px; text-align:left; }
+.rsvp-form label{ font-size:.75rem; letter-spacing:.1em; color:var(--charcoal-soft); margin-bottom:6px; display:block; }
+.rsvp-form input[type="text"],
+.rsvp-form input[type="number"],
+.rsvp-form textarea{
+  width:100%; padding:11px 12px; border:1px solid rgba(110,26,32,.3);
+  background:#fff; font-family:var(--sans); font-size:.92rem; color:var(--charcoal);
+  border-radius:2px;
+}
+.rsvp-form textarea{ resize:vertical; min-height:80px; }
+.rsvp-choice{ display:flex; gap:10px; }
+.rsvp-choice button{
+  flex:1; padding:10px; border:1px solid var(--maroon); background:#fff;
+  color:var(--maroon); font-family:var(--sans); font-size:.85rem; cursor:pointer;
+  border-radius:2px; transition:background .2s, color .2s;
+}
+.rsvp-choice button.active{ background:var(--maroon); color:var(--ivory); }
+.rsvp-status{ margin-top:16px; font-size:.9rem; font-family:var(--serif); font-style:italic; }
+.rsvp-status.success{ color:var(--maroon); }
+.rsvp-status.error{ color:#a12; }
+
+/* ---------- FOOTER ---------- */
+#footer{ background:var(--maroon-deep); color:var(--gold-light); max-width:none; padding-bottom:60px; }
+.footer-line{ font-family:var(--serif); font-style:italic; font-size:1.1rem; margin-bottom:16px; }
+.footer-names{ font-family:var(--serif); font-size:1.5rem; color:var(--ivory); }
+.footer-date{ margin-top:8px; font-size:.8rem; letter-spacing:.2em; opacity:.75; }
+
+/* ---------- MUSIC TOGGLE ---------- */
+#musicToggle{
+  position:fixed; bottom:20px; right:20px; z-index:50;
+  width:46px; height:46px; border-radius:50%;
+  background:var(--maroon); border:1px solid var(--gold);
+  color:var(--gold-light); font-size:1.1rem;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.3);
+}
+
+.loading-screen{
+  position:fixed; inset:0; background:var(--maroon-deep); color:var(--gold-light);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-style:italic; font-size:1.1rem; z-index:200;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .door-tap{ animation:none; }
+  html{ scroll-behavior:auto; }
+}

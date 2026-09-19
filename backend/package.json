@@ -1,0 +1,15 @@
+{
+  "name": "wedding-invite-backend",
+  "version": "1.0.0",
+  "description": "API server for the wedding invitation site (event info + RSVP storage)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
