@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import DoorOverlay from './components/DoorOverlay.jsx';
 import Hero from './components/Hero.jsx';
 import Family from './components/Family.jsx';
+import OurStory from './components/OurStory.jsx';
 import Countdown from './components/Countdown.jsx';
 import Events from './components/Events.jsx';
 import Gallery from './components/Gallery.jsx';
@@ -52,6 +53,7 @@ export default function App() {
       <DoorOverlay groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
       <Hero groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
       <Family groom={info.couple.groom} bride={info.couple.bride} />
+      <OurStory story={info.story} />  
       <Countdown dateISO={info.weddingDateISO} dateDisplay={info.weddingDateDisplay} />
       <Events events={info.events} />
       <Gallery />
