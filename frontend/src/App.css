@@ -334,3 +334,33 @@ h1,h2,h3{ font-family:var(--serif); font-weight:500; }
   .hero-bg-glow{ transform:translate(-50%, 0) !important; }
   .shimmer-text{ animation:none; background-position:0 center; }
 }
+
+/* ---------- DECORATIVE: CORNER ORNAMENTS ---------- */
+.corner-ornament{
+  position:absolute; width:56px; height:56px; opacity:.55; z-index:1; pointer-events:none;
+}
+.corner-top-left{ top:14px; left:14px; }
+.corner-top-right{ top:14px; right:14px; transform:scaleX(-1); }
+.corner-bottom-left{ bottom:14px; left:14px; transform:scaleY(-1); }
+.corner-bottom-right{ bottom:14px; right:14px; transform:scale(-1,-1); }
+
+/* ---------- DECORATIVE: MANDALA WATERMARK ---------- */
+.mandala-watermark{
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  z-index:0; pointer-events:none;
+}
+
+/* ---------- DECORATIVE: GOLD SHIMMER TEXT ---------- */
+.shimmer-text{
+  background:linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 25%, #fff8e0 50%, var(--gold-light) 75%, var(--gold) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:shimmer 5s linear infinite;
+}
+@keyframes shimmer{
+  0%{ background-position:200% center; }
+  100%{ background-position:-200% center; }
+}

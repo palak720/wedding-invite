@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import CornerOrnament from './CornerOrnament.jsx';
+import MandalaWatermark from './MandalaWatermark.jsx';
 
 export default function Hero({ groomName, brideName }) {
   const glowRef = useRef(null);
@@ -16,9 +18,14 @@ export default function Hero({ groomName, brideName }) {
   return (
     <section id="hero" className="dark">
       <div className="hero-bg-glow" ref={glowRef}></div>
+      <MandalaWatermark />
+      <CornerOrnament position="top-left" />
+      <CornerOrnament position="top-right" />
+      <CornerOrnament position="bottom-left" />
+      <CornerOrnament position="bottom-right" />
       <div className="inner">
         <div className="blessing">With the blessings of our elders</div>
-        <h1 className="hero-names">
+        <h1 className="hero-names shimmer-text">
           {groomName.split(' ')[0]}
           <span className="hero-amp">&amp;</span>
           {brideName.split(' ')[0]}
