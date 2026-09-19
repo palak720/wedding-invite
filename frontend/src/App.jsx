@@ -9,6 +9,7 @@ import Venue from './components/Venue.jsx';
 import RSVP from './components/RSVP.jsx';
 import Footer from './components/Footer.jsx';
 import MusicToggle from './components/MusicToggle.jsx';
+import FallingPetals from './components/FallingPetals.jsx';
 
 export default function App() {
   const [info, setInfo] = useState(null);
@@ -58,6 +59,8 @@ export default function App() {
       <RSVP />
       <Footer groomName={info.couple.groom.name} brideName={info.couple.bride.name} dateShort={dateShort} />
       <MusicToggle />
+      <DoorOverlay groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
+<FallingPetals />
     </>
   );
 }

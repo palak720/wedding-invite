@@ -183,3 +183,39 @@ h1,h2,h3{ font-family:var(--serif); font-weight:500; }
   opacity:1;
   transform:translateY(0);
 }
+
+/* ---------- HERO PARALLAX GLOW ---------- */
+#hero{ position:relative; overflow:hidden; }
+.hero-bg-glow{
+  position:absolute; top:-25%; left:50%; width:150%; height:150%;
+  transform:translate(-50%, 0);
+  background:radial-gradient(circle, rgba(201,162,39,.16) 0%, transparent 60%);
+  pointer-events:none; z-index:0;
+}
+#hero .inner{ position:relative; z-index:1; }
+
+/* ---------- FALLING PETALS ---------- */
+.petals-layer{
+  position:fixed; inset:0; z-index:40; pointer-events:none; overflow:hidden;
+}
+.petal{
+  position:absolute; top:-5%;
+  background:radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold));
+  border-radius:50% 0 50% 50%;
+  opacity:0;
+  animation-name:petal-fall;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+@keyframes petal-fall{
+  0%{ transform:translate(0,0) rotate(0deg); opacity:0; }
+  10%{ opacity:.55; }
+  90%{ opacity:.5; }
+  100%{ transform:translate(var(--drift), 110vh) rotate(360deg); opacity:0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .petals-layer{ display:none; }
+  .hero-bg-glow{ transform:translate(-50%, 0) !important; }
+}
