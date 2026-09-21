@@ -364,3 +364,25 @@ h1,h2,h3{ font-family:var(--serif); font-weight:500; }
   0%{ background-position:200% center; }
   100%{ background-position:-200% center; }
 }
+
+
+/* ---------- WISHES WALL ---------- */
+#wishes{ background:var(--ivory); }
+.wishes-grid{
+  display:grid; grid-template-columns:1fr; gap:16px; margin-top:30px;
+}
+@media (min-width:520px){
+  .wishes-grid{ grid-template-columns:1fr 1fr; }
+}
+.wish-card{
+  background:#fff; border:1px solid rgba(110,26,32,.15);
+  border-left:3px solid var(--gold);
+  padding:18px 20px; text-align:left; border-radius:2px;
+}
+.wish-message{
+  font-family:var(--serif); font-style:italic; font-size:1.02rem;
+  color:var(--charcoal); line-height:1.5; margin-bottom:10px;
+}
+.wish-name{
+  font-size:.75rem; letter-spacing:.12em; color:var(--maroon-soft); font-weight:500;
+}

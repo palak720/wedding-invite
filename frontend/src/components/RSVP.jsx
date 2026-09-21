@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useReveal } from '../hooks/useReveal.js';
 
-export default function RSVP() {
+export default function RSVP({ onSubmitted }) {
+  const [sectionRef, sectionVisible] = useReveal();
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('yes');
   const [guests, setGuests] = useState(1);
@@ -28,6 +30,7 @@ export default function RSVP() {
       setName('');
       setMessage('');
       setGuests(1);
+      if (onSubmitted) onSubmitted();
     } catch (err) {
       setStatus({ type: 'error', text: err.message || 'Could not submit RSVP. Please try again.' });
     } finally {
@@ -36,7 +39,7 @@ export default function RSVP() {
   }
 
   return (
-    <section id="rsvp">
+    <section id="rsvp" ref={sectionRef} className={`reveal ${sectionVisible ? 'visible' : ''}`}>
       <div className="eyebrow-flourish"><span>RSVP</span></div>
       <form className="rsvp-form" onSubmit={handleSubmit}>
         <div>

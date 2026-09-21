@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DoorOverlay from './components/DoorOverlay.jsx';
+import FallingPetals from './components/FallingPetals.jsx';
 import Hero from './components/Hero.jsx';
 import Family from './components/Family.jsx';
 import OurStory from './components/OurStory.jsx';
@@ -8,13 +9,14 @@ import Events from './components/Events.jsx';
 import Gallery from './components/Gallery.jsx';
 import Venue from './components/Venue.jsx';
 import RSVP from './components/RSVP.jsx';
+import WishesWall from './components/WishesWall.jsx';
 import Footer from './components/Footer.jsx';
 import MusicToggle from './components/MusicToggle.jsx';
-import FallingPetals from './components/FallingPetals.jsx';
 
 export default function App() {
   const [info, setInfo] = useState(null);
   const [error, setError] = useState(null);
+  const [wishesRefreshKey, setWishesRefreshKey] = useState(0);
 
   useEffect(() => {
     fetch('/api/wedding-info')
@@ -51,18 +53,18 @@ export default function App() {
   return (
     <>
       <DoorOverlay groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
+      <FallingPetals />
       <Hero groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
       <Family groom={info.couple.groom} bride={info.couple.bride} />
-      <OurStory story={info.story} />  
+      <OurStory story={info.story} />
       <Countdown dateISO={info.weddingDateISO} dateDisplay={info.weddingDateDisplay} />
       <Events events={info.events} />
       <Gallery />
       <Venue venue={info.venue} calendarUrl={calendarUrl} />
-      <RSVP />
+      <RSVP onSubmitted={() => setWishesRefreshKey(k => k + 1)} />
+      <WishesWall refreshTrigger={wishesRefreshKey} />
       <Footer groomName={info.couple.groom.name} brideName={info.couple.bride.name} dateShort={dateShort} />
       <MusicToggle />
-      <DoorOverlay groomName={info.couple.groom.name} brideName={info.couple.bride.name} />
-<FallingPetals />
     </>
   );
 }
